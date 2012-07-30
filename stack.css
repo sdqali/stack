@@ -55,3 +55,8 @@ screen and (max-device-width: 480px) {
     display: block;
   }
 }
+
+.swatch {
+    width: auto;
+    height: 20px;
+}
