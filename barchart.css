@@ -1,0 +1,8 @@
+.chart rect {
+  stroke: white;
+  fill: SteelBlue;
+}
+
+.chart {
+  font-size: 0.5em;
+}

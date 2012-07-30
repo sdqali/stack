@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<script src="d3.v2.js?2.7.3"></script>
+<script src="js/barchart.js"></script>
 <style>
 
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
 @import url(stack.css);
+@import url(barchart.css);
+
+body {
+  font-size: 36px;
+  font-family: 'Helvetica Neue';
+}
 
 .big {
   font-size: 128px;
@@ -16,10 +25,232 @@
 
 </style>
 <body class="overview">
+<section>
+  <h1 class="caption">Visualising data with d3.js</h1>
+</section>
+<section>
+  <p>Sadique Ali</p>
+  <p><b>@sdqali</b> <br/>
+    <b>blog.sdqali.in</b></p>
+</section>
+<section>
+  <h1>d3 ?</h1>
+</section>
+<section>
+  <h1>d3.js == visualisations</h1>
+</section>
+<section>
+  <h1>d3 = Data Driven Documents</h1>
+</section>
 
 <section>
-  <p><b>Stack</b> is a presentation library<br> with scroll-based navigation.
-  <p class="grey">Scroll down to continue.
+  <h2>Data → Elements</h2>
+  <p>
+    No new representation
+  </p>
+  <p>
+    Construct DOM from data
+  </p>
+</section>
+
+<section>
+  <h2>
+    Existing representations
+  </h2>
+  <p>
+    HTML <br />
+    SVG
+  </p>
+
+  <p>
+    Well understood
+  </p>
+</section>
+
+<section>
+  <h2>SVG?</h2>
+  <p>
+    Yes!
+  </p>
+</section>
+
+<section>
+  <h2>This</h2>
+  <pre>
+    <code contenteditable>
+&lt;!DOCTYPE html&gt;<br/>&lt;meta charset=&quot;utf-8&quot;&gt;<br/>&lt;svg width=&quot;960&quot; height=&quot;500&quot;&gt;<br/>    &lt;circle cx=&quot;480&quot; cy=&quot;250&quot; r=&quot;200&quot; fill=&quot;steelblue&quot;&gt;<br/>    &lt;/circle&gt;<br/>&lt;/svg&gt;<br/>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>Renders This</h2>
+  <svg width="960" height="500" style="position:absolute;bottom:15;">
+    <circle cx="480" cy="250" r="200" fill="steelblue">
+    </circle>
+  </svg>
+</section>
+
+<section>
+  <h2>Enough Talk!</h2>
+  <h2 class="fragment">Let's Write Code!</h2>
+</section>
+
+<section>
+  <h2>Run this:</h2>
+  <pre class="fragment"><code contenteditable>
+python -m SimpleHTTPServer 7654
+  </code></pre>
+  <p class="fragment">You can thank me later!</p>
+</section>
+
+<section>
+  <h2>Bar Charts</h2>
+  <p class="fragment">01-barchart.html</p>
+</section>
+
+<section>
+  <h1>Deaths in traffic accidents</h1>
+  <div id="barchart">
+  </div>
+  <script type='text/javascript'>
+    drawbarChart();
+  </script>
+</section>
+
+<section>
+  <h1>Let's see what is under the cover</h1>
+</section>
+
+<section>
+  <pre> <code>
+&lt;div id=&quot;barchart&quot;&gt;<br/>&lt;/div&gt;<br/>
+</code> </pre>
+<h2>
+  This is where we draw!
+</h2>
+</section>
+
+<section>
+  <pre> <code>
+var data = [820, 883, 903, 836,
+  915, 981, 892, 761, 858, 757, 363];
+  </code> </pre>
+  <h2>
+    That's the data!
+  </h2>
+</section>
+
+<section>
+  <h1>
+    It has got nothing to do with the fact that I am a pedestrian :-)
+  </h1>
+</section>
+
+<section>
+  <pre>
+var chart = d3.select("#barchart")
+  .append("svg")
+  .attr ("class", "chart")
+  .attr ("width", 1000)
+  .attr ("height", 20 * data.length);
+  </pre>
+  <h2>
+    Let's build an SVG!
+  </h2>
+</section>
+
+<section>
+  <h2>Selectors</h2>
+  <ul>
+    <li><code>select</code></li>
+    <li><code>selectAll</code></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Use CSS selectors</h2>
+<pre> <code>
+#foo        //&lt;any id=&quot;foo&quot;&gt;<br/>foo         //&lt;foo&gt;<br/>.foo        //&lt;anyclass=&quot;foo&quot;&gt;<br/>[foo=bar]   //&lt;any foo=&quot;bar&quot;&gt;<br/>foo bar     //&lt;foo&gt;&lt;bar&gt;&lt;/foo&gt;<br/>
+</pre> </code>
+</section>
+
+<section>
+  <h1> Selections are Powerful </h1>
+  <h2> We will see...</h2>
+</section>
+
+<section>
+  <pre> <code>
+selection.append("svg")
+  </pre> </code>
+  <h2> Appends an SVG </h2>
+</section>
+
+<section>
+  <pre> <code>
+selection.attr("width", 1000)
+  </pre> </code>
+  <h2> Sets attributes </h2>
+</section>
+
+<section>
+  <h2>Attributes could be anything</h2>
+  <ul>
+    <li>radius</li>
+    <li>x, y coords</li>
+    <li>text</li>
+    <li>classname</li>
+    <li>etc.</li>
+  </ul>
+</section>
+
+<section>
+  <pre style="position:absolute;top:100;"> <code>
+chart.selectAll ("rect")
+  .data (data)
+  .enter ()
+  .append ("rect")
+  .attr ("width", function (d) {
+    return d;
+  })
+  </pre> </code>
+</section>
+
+<section>
+  <h2>Let's simplify that!</h2>
+</section>
+
+<section>
+  <pre> <code>
+var rectangles = chart.selectAll("rect")
+                      .data(data)
+  </pre> </code>
+  <p>rects correspond to data</p>
+  <p><code>data</code> provides <code>enter</code> and <code>exit</code></p>
+</section>
+
+<section>
+  <pre> <code>
+var rectangles = chart.selectAll("rect")
+                      .data(data)
+rectangles.enter()
+          .append("rect")
+  </pre> </code>
+  <p><code>append</code> on <code>enter()</code> adds missing elements</p>
+</section>
+
+<section>
+  <pre> <code>
+var rectangles = chart.selectAll("rect")
+                      .data(data)
+rectangles.enter()
+          .append("rect")
+          .attr("y", function(d, i) {
+                           return i * 20;
+                      })
+  </pre> </code>
+  <p>Elements are bound to data</p>
 </section>
 
 <section>
@@ -93,5 +324,4 @@
   <p class="grey">View source to get started.
 </section>
 
-<script src="d3.v2.js?2.7.3"></script>
 <script src="stack.v0.js"></script>
