@@ -424,6 +424,34 @@ svg.append("g")
 </section>
 
 <section>
+  <pre> <code>
+var yRule = chart.append("g")
+  .selectAll(".rule")
+  .data(xScale.ticks(20))
+  .enter()
+  .append("g");
+  </pre> </code>
+  <p>
+    Create <code>g</code> using <code>Ticks</code>
+  </p>
+</section>
+
+<section>
+  <pre> <code>
+var yRule = chart.append("g")
+  .selectAll(".rule")
+  .data(xScale.ticks(20))
+  .enter()
+  .append("g");
+yRule.append("line")
+  .attr("y2", height - 2 * margins.bottom);
+  </pre> </code>
+  <p>
+    Draw a line for each tick
+  </p>
+</section>
+
+<section>
   <h2>Barchart, with Axes and Rules</h2>
   <p> 04-barchart4.html </p>
 </section>
@@ -434,6 +462,26 @@ svg.append("g")
   <script type='text/javascript'>
     drawbarChart4();
   </script>
+</section>
+
+<section>
+  <h2>Let's build something</p>
+</section>
+
+<section>
+  <h2>Objective</p>
+  <p>
+    Scatterplot
+  </p>
+  <p>
+    Scale
+  </p>
+  <p>
+    Axes
+  </p>
+  <p>
+    Rules
+  </p>
 </section>
 
 <script src="stack.v0.js"></script>
