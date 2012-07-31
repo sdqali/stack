@@ -1,17 +1,50 @@
+#barchart {
+    margin-left: 50px;
+    float: left;
+}
+#barchart2 {
+    margin-left: 50px;
+    float: left;
+}
 #barchart3 {
+    margin-left: 50px;
+    float: left;
+}
+#barchart4 {
     margin-left: 50px;
     float: left;
 }
 .chart {
     margin-left: 50px;
     float: left;
+    font-size: 0.5em;
+    color:white;
 }
+
+.rule line {
+    stroke: #fff;
+    stroke-opacity: 0.2;
+    shape-rendering: crispEdges;
+}
+
+.rule first-child line {
+    stroke: #fff;
+    stroke-opacity: 0.5;
+    shape-rendering: crispEdges;
+}
+
 .chart rect {
   stroke: white;
   fill: SteelBlue;
 }
 
-.chart {
-  font-size: 0.5em;
-  color: white;
+.axis path,
+.axis line {
+    stroke: white;
+    fill: none;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 11px;
 }
