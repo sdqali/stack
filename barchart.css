@@ -1,3 +1,11 @@
+#barchart3 {
+    margin-left: 50px;
+    float: left;
+}
+.chart {
+    margin-left: 50px;
+    float: left;
+}
 .chart rect {
   stroke: white;
   fill: SteelBlue;
@@ -5,4 +13,5 @@
 
 .chart {
   font-size: 0.5em;
+  color: white;
 }

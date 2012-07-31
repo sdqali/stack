@@ -60,3 +60,15 @@ screen and (max-device-width: 480px) {
     width: auto;
     height: 20px;
 }
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: white;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 11px;
+    color: white;
+}
